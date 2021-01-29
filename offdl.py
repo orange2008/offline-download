@@ -13,6 +13,6 @@ print("Writing Script...")
 with open("script.sh", 'w') as f:
     f.write("#!/bin/sh\n")
     for k,v  in fp.items():
-        f.write('wget -O "' + str(k) + '" --no-check-certificate "' + str(v) + '"\n')
+        f.write('sudo wget -O "' + str(k) + '" --no-check-certificate "' + str(v) + '"\n')
 
 print("Process exited.")
