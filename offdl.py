@@ -4,7 +4,7 @@ import sys
 import json
 
 print("Mounting Drive...")
-os.system("mkdir -p /home/gdrive && rclone mount drive: /home/gdrive  --umask 0000  --default-permissions  --allow-non-empty  --allow-other  --buffer-size 32M  --dir-cache-time 12h  --vfs-read-chunk-size 64M  --vfs-read-chunk-size-limit 1G & ")
+os.system("sudo mkdir -p /home/gdrive && sudo rclone mount drive: /home/gdrive  --umask 0000  --default-permissions  --allow-non-empty  --allow-other  --buffer-size 32M  --dir-cache-time 12h  --vfs-read-chunk-size 64M  --vfs-read-chunk-size-limit 1G & ")
 print("Reading config..")
 fobj = open("config.json")
 fp = json.load(fobj)
