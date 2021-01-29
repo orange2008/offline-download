@@ -1,0 +1,29 @@
+name: Offline Download
+on:
+    push:
+jobs:
+    offdl:
+        name: Offline Download System
+        runs-on: ubuntu-latest
+        steps:
+        - name: checkout
+          uses: actions/checkout@master
+        - name: Download and Install rclone
+          run: sudo curl https://rclone.org/install.sh | sudo bash
+        - name: Install Python via APT
+          run: |
+              sudo apt install python3 python3-pip python3-dev -y
+        - name: Install Packages
+          run: |
+              sudo apt install curl wget aria2 -y
+        - name: Decrypt RCLONE
+          run: |
+              bash decrypt.sh
+          env:
+              GPG_PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+        - name: Write script
+          run: |
+              python3 offdl.py
+        - name: Go
+          run: |
+              bash script.sh
